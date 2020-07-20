@@ -2,13 +2,15 @@
 
 #if [ -e .REL ] ; then rm -fdr .REL; fi
 #mkdir .DEV
+
 pushd services
 
-for D in `find . -type d`
-do
-    pushd $D
+for D in *; do
+    if [ -d "${D}" ]; then
+    pushd ${D}
         ./.sprall-svc/scripts/rel.sh
     popd
+    fi
 done
 
 popd

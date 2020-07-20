@@ -4,11 +4,12 @@
 #mkdir .DEV
 pushd services
 
-for D in `find . -type d`
-do
-    pushd $D
+for D in *; do
+    if [ -d "${D}" ]; then
+    pushd ${D}
         ./.sprall-svc/scripts/dev.sh
     popd
+    fi
 done
 
 popd
